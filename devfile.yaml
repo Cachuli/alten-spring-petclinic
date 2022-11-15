@@ -34,34 +34,7 @@ components:
   - name: m2
     volume:
       size: 2Gi
-  - name: mysql
-    container:
-      image: registry.redhat.io/rhel8/mysql-80@sha256:55c08482a20b653dab4d78fad77b5a459e04258135e19fb14efbd1072c786fd3
-      memoryLimit: 512Mi
-      env:
-        - name: DATABASE_SERVICE_NAME
-          value: mysql-workspace
-        - name: MYSQL_USER
-          value: petclinic
-        - name: MYSQL_PASSWORD
-          value: petclinic
-        - name: MYSQL_ROOT_PASSWORD
-          value: petclinic
-        - name: MYSQL_DATABASE
-          value: petclinic
-      volumeMounts:
-        - name: mysql-storage
-          path: /var/lib/mysql
-      endpoints:
-        - name: mysql-workspace
-          targetPort: 3306
-          attributes:
-            discoverable: 'true'
-            public: 'false'
-  - name: mysql-storage
-    volume:
-      size: 2Gi
-
+ 
 commands:
   - id: 01build
     exec:
